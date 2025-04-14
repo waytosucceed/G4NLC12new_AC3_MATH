@@ -1,0 +1,94 @@
+[
+  {
+    "questionNo": 1,
+    "question": "In the old forest, the trees hum: “to pass through find the area of each rectangle.",
+    "row1": ["10","7"],  
+    "row1_ans": ["10","7"],
+    "row2": ["20","",""],  
+    "row2_ans": ["20","200","140"],
+    "row3": ["9","",""],  
+    "row3_ans": ["9","90","63"]
+  },
+  {
+    "questionNo": 2,
+    "question": "A pond reflects 32 × 23. Find the area of each rectangle for 32 x 23.",
+    "row1": ["20","3"],  
+    "row1_ans": ["20","3"],
+    "row2": ["30","",""],  
+    "row2_ans": ["30","600","90"],
+    "row3": ["2","",""],  
+    "row3_ans": ["2","40","6"]
+  },
+  {
+    "questionNo": 3,
+    "question": "The path splits unless you solve 11 × 35 carved into a stone gate.",
+    "row1": ["30","5"],  
+    "row1_ans": ["30","5"],
+    "row2": ["10","",""],  
+    "row2_ans": ["10","300","50"],
+    "row3": ["1","",""],  
+    "row3_ans": ["1","30","5"],
+    "row4": ["11","×","35","=",""],  
+    "row4_ans": ["11","×","35","=","385"]
+  },
+  {
+    "questionNo": 3,
+    "question": "A feathered creature guards the next scroll. It says: “Use the model to find 26×14.”",
+    "row1": ["10","4"],  
+    "row1_ans": ["10","4"],
+    "row2": ["20","",""],  
+    "row2_ans": ["20","200","80"],
+    "row3": ["6","",""],  
+    "row3_ans": ["6","60","24"],
+    "row4": ["26","×","14","=",""],  
+    "row4_ans": ["26","×","14","=","364"]
+  },
+  {
+    "questionNo": 3,
+    "question": "A shadowy figure gives you a riddle: “Use the model to find 41 x 16”",
+    "row1": ["10","6"],  
+    "row1_ans": ["10","6"],
+    "row2": ["40","",""],  
+    "row2_ans": ["40","400","240"],
+    "row3": ["1","",""],  
+    "row3_ans": ["1","10","6"],
+    "row4": ["41","×","16","=",""],  
+    "row4_ans": ["41","×","16","=","656"]
+  },
+  {
+    "questionNo": 3,
+    "question": "A trapdoor will only open if you use the model to find 29 x 34.",
+    "row1": ["30","4"],  
+    "row1_ans": ["30","4"],
+    "row2": ["20","",""],  
+    "row2_ans": ["20","600","80"],
+    "row3": ["1","",""],  
+    "row3_ans": ["1","270","36"],
+    "row4": ["29","×","34","=",""],  
+    "row4_ans": ["29","×","34","=","986"]
+  },
+  {
+    "questionNo": 3,
+    "question": "A scroll inside a tree stump says: “To unlock the treasure path, solve 44 × 28”",
+    "row1": ["20","8"],  
+    "row1_ans": ["20","8"],
+    "row2": ["40","",""],  
+    "row2_ans": ["40","800","320"],
+    "row3": ["4","",""],  
+    "row3_ans": ["4","80","32"],
+    "row4": ["44","×","28","=",""],  
+    "row4_ans": ["44","×","28","=","1232"]
+  },
+  {
+    "questionNo": 3,
+    "question": "The final puzzle lies in the golden box. It reads: “What is 36 × 15?”",
+    "row1": ["30","6"],  
+    "row1_ans": ["30","6"],
+    "row2": ["10","",""],  
+    "row2_ans": ["10","300","60"],
+    "row3": ["5","",""],  
+    "row3_ans": ["5","150","30"],
+    "row4": ["36","×","15","=",""],  
+    "row4_ans": ["36","×","15","=","540"]
+  }
+]

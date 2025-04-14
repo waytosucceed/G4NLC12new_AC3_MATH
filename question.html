@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+    crossorigin="anonymous"
+  />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"
+  ></script>
+  <link rel="stylesheet" href="wts.css" />
+  <link rel="icon" type="image/x-icon" href="Logo_last.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playwrite+MX:wght@100..400&display=swap"
+    rel="stylesheet"
+  />
+  <title>Activity_3</title>
+  <style>
+    .imgdiv {
+      position: relative;
+    }
+    
+    
+    .input-container {
+    position: absolute;
+    bottom: 27%;
+    left: 47%;
+    transform: translateX(-50%);
+    width: 45%;
+  }
+  
+  .input-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    width: 95%;
+    max-width: 700px;
+  }
+  
+  .row1-inputs {
+    grid-column: 2 / span 2; /* Start from second column, span 2 columns */
+    display: flex;
+    gap: 10px;
+  }
+  
+  .row2-inputs {
+    grid-column: 1 / span 3; /* Span all 3 columns */
+    display: flex;
+    gap: 10px;
+  }
+  
+  .row3-inputs {
+
+    grid-column: 2 / span 2; /* Start from second column, span 2 columns */
+    display: flex;
+    /* gap: 2px; */
+    /* text-align: start !important; */
+  }
+  .input-wrapper {
+    flex: 1;
+  }
+  
+  /* Adjust width of prefilled inputs */
+  .input-wrapper input[readonly] {
+    width: 70% !important; /* Smaller width for prefilled inputs */
+    background-color: transparent;
+    border: none;
+  }
+  
+  .input-wrapper input {
+    padding: 0 !important;
+    font-size: 2.5vw;
+    font-weight: 550;
+    border: 2px solid black;
+    text-align: center;
+    width: 100%;
+  }
+  
+  input.invalid {
+    border-color: red;
+  }
+  
+  /* New combined wrapper for last two inputs */
+  .combined-wrapper {
+    flex: 2; /* Take twice the space of regular inputs */
+    display: flex;
+    border-radius: 8px;
+    height: 100%;
+    min-height: 80px;
+    overflow: hidden; /* Ensure clean division */
+  }
+  
+  .split-section {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+  }
+  
+  .split-section.pink-bg {
+    background-color: #ffccdd; /* Light pink */
+  }
+  
+  .split-section.green-bg {
+    background-color: #ccffcc; /* Light green */
+  }
+  
+  .split-section input {
+    width: 80% !important;
+    height: 80% !important;
+    font-size: 2.5vw;
+    font-weight: 550;
+    border: 2px solid black;
+    text-align: center;
+  }
+    
+    /* Special colored wrapper divs for last two inputs */
+    .special-wrapper {
+      flex: 1;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      height: 100%;
+      min-height: 80px;
+    }
+
+    .special-wrapper.red-bg {
+  background-color: #ffccdd; /* Light pink */
+}
+
+.special-wrapper.green-bg {
+  background-color: #ccffcc; /* Light green */
+}
+    
+    .special-wrapper input {
+      width: 80% !important;
+      height: 80% !important;
+      font-size: 3vw;
+      font-weight: 550;
+      border: 2px solid black;
+      text-align: center;
+    }
+    
+    .answers{
+      margin-top: 2%;
+    }
+    .question {
+      position: absolute;
+      top: 5%;
+      left: 48%;
+      transform: translate(-50%, 0);
+      width: 85%;
+      color: black;
+      font-size: 1.5rem;
+      font-weight: 600;
+      text-align: center;
+      border-radius: 5px;
+    }
+    .smallbtn.active,
+    .smallbtn.default {
+      background-color: #f56c6c;
+      color: #ffffff;
+    }
+    
+    #questiondiv {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      text-align: center;
+    }
+    .messageContainer {
+      /* position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%); */
+      text-align: center;
+      z-index: 10;
+      color: white;
+    }
+    #secondImg {
+      position: absolute;
+      top: 24%;
+      left: 20%;
+    }
+    #nextbtn {
+      width: 100%;
+    }
+   
+    .input-blue {
+      background-color: aquamarine;
+    }
+    .input-green {
+      background-color: rgb(127, 255, 133);
+    }
+    .input-orange {
+      background-color: rgb(248, 169, 132);
+    }
+    .input-yellow {
+      background-color: rgb(249, 246, 159);
+    }
+    .input-pink {
+      background-color: rgb(246, 157, 235);
+    }
+    .input-cyan {
+      background-color: rgb(133, 218, 237);
+    }
+    .input-lime {
+      background-color: rgb(181, 233, 102);
+    }
+    
+    #submitbtn{
+      /* position: absolute;
+      bottom: 20%; */
+      width: 85px;
+      height: 85px;
+      border-radius: 50%;
+    }
+    #nextbtn{
+      /* position: absolute;
+      bottom: 20%; */
+      border-radius: 50%;
+      width: 85px;
+      height: 85px;
+    }
+    .btn {
+      font-family: fantasy;
+      position: relative;
+      background-color: #007bff; 
+      color: white;
+      border: none;
+      box-shadow: 10px 10px 20px rgba(0, 0, 0, 1);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn:hover {
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .btn:active {
+      transform: translateY(4px);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    }
+    #row2-input-0{
+     
+      text-align: end !important;
+    }
+  </style>
+   <script>
+    function playSound() {
+      const sound = document.getElementById("sound1");
+      sound.play();
+    }
+  </script>
+</head>
+<body autocomplete="off">
+  <audio id="cheers">
+    <source src="cheers.mp3" type="audio/mpeg" />
+  </audio>
+  <audio id="sound" src="points.mp3"></audio>
+  <audio id="fail" src="fail.mp3"></audio>
+  <div
+    class="header"
+    style="
+      width: auto;
+      box-shadow: 5px 5px 10px rgb(0, 0, 0);
+      padding-bottom: 10px;
+    "
+  >
+    <img
+      src="Logo.png"
+      width="5%"
+      style="float: left; margin-top: 25px; text-align: left"
+      class="img-responsive"
+    />
+    <span>
+      <img
+        src="header.png"
+        width="30%"
+        height=""
+        class="img-responsive"
+        style="text-align: left"
+      />
+    </span>
+  </div>
+  <br />
+  <center>
+    <h1 id="heading">Area Modal</h1>
+   
+    
+    <div class="maindiv container-fluid d-flex">
+      <div id="questionButtons" class="questionButtons"></div>
+      <div class="col-lg-11 col-md-11 col-sm-11 col-xs-11 imgdiv">
+        
+        <img id="math_ques" src="question_img.jpg" width="100%" height="100%" />
+        <img id="secondImg" src="" style="width: 60%;height: 48%;" /> 
+        <div style="display: flex;flex-direction: row;">
+          <div id="question" class="question"></div>
+        <div class="input-container" style="background-color: white;padding-bottom: 1%;">
+          <div class="input-grid">
+            <!-- Row 1 inputs (starting from 2nd column) -->
+            <div class="row1-inputs" id="row1-inputs">
+              <!-- Input fields will be generated dynamically -->
+            </div>
+            
+            <!-- Row 2 inputs (spans all columns) -->
+            <div class="row2-inputs" id="row2-inputs">
+              <!-- Input fields will be generated dynamically -->
+            </div>
+
+            <div class="row3-inputs" id="row3-inputs">
+              <!-- Input fields will be generated dynamically -->
+            </div>
+           
+
+          </div>
+        </div>
+        </div>
+        
+        <div class="d-flex justify-content-between align-items-center px-5" style="position: absolute; bottom: 6%; width: 100%;">
+          <div class="btn-container d-flex justify-content-start" style="flex: 1;">
+            <button id="submitbtn" class="btn btn-lg btn-primary">Submit</button>
+            <button id="nextbtn" class="btn btn-lg btn-primary" style="display: none;" onclick="newques()">Next</button>
+          </div>
+          <div class="messageContainer text-end" style="flex: 1;">
+            <p id="message" class="message m-0"></p>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+
+    <script>
+      let questions;
+      let currentQuestion = 0;
+      
+      // Color classes for inputs
+      const colorClasses = [
+        // 'input-blue',
+        // 'input-green',
+        // 'input-orange',
+        // 'input-yellow',
+        // 'input-pink',
+        // 'input-cyan',
+        // 'input-lime'
+      ];
+
+      async function fetchQuestions() {
+        try {
+          const response = await fetch('question2.json');
+          if (!response.ok) {
+            throw new Error('Failed to load questions');
+          }
+          questions = await response.json();
+        } catch (error) {
+          console.error('Error loading questions:', error);
+        }
+      }
+
+      function createInputField(id, colorClass, value = '', editable = true) {
+        const wrapper = document.createElement('div');
+        wrapper.className = 'input-wrapper';
+        
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.className = 'form-control ' + colorClass;
+        input.id = id;
+        input.value = value;
+        input.autocomplete = 'off';
+        
+        if (!editable) {
+          input.readOnly = true;
+          input.style.cursor = 'no-drop';
+        }
+        
+        wrapper.appendChild(input);
+        return wrapper;
+      }
+
+      function createCombinedInputFields(secondLastId, lastId, secondLastValue = '', lastValue = '', secondLastEditable = true, lastEditable = true) {
+    const combinedWrapper = document.createElement('div');
+    combinedWrapper.className = 'combined-wrapper';
+    
+    // Create first section (light pink)
+    const pinkSection = document.createElement('div');
+    pinkSection.className = 'split-section pink-bg';
+    
+    const input1 = document.createElement('input');
+    input1.type = 'text';
+    input1.className = 'form-control';
+    input1.id = secondLastId;
+    input1.value = secondLastValue;
+    input1.autocomplete = 'off';
+    
+    if (!secondLastEditable) {
+      input1.readOnly = true;
+      input1.style.cursor = 'no-drop';
+    }
+    
+    pinkSection.appendChild(input1);
+    
+    // Create second section (light green)
+    const greenSection = document.createElement('div');
+    greenSection.className = 'split-section green-bg';
+    
+    const input2 = document.createElement('input');
+    input2.type = 'text';
+    input2.className = 'form-control';
+    input2.id = lastId;
+    input2.value = lastValue;
+    input2.autocomplete = 'off';
+    
+    if (!lastEditable) {
+      input2.readOnly = true;
+      input2.style.cursor = 'no-drop';
+    }
+    
+    greenSection.appendChild(input2);
+    
+    // Add both sections to combined wrapper
+    combinedWrapper.appendChild(pinkSection);
+    combinedWrapper.appendChild(greenSection);
+    
+    return combinedWrapper;
+  }
+     
+      function loadQuestion() {
+        const questionElement = document.getElementById('question');
+        const questionImage = document.getElementById('math_ques');
+        const secondImgElement = document.getElementById('secondImg');
+        
+        // Get row containers
+        const row1Container = document.getElementById('row1-inputs');
+        const row2Container = document.getElementById('row2-inputs');
+        const row3Container = document.getElementById('row3-inputs');
+        
+        // Clear previous inputs
+        row1Container.innerHTML = '';
+        row2Container.innerHTML = '';
+        row3Container.innerHTML = '';
+        
+        const current = questions[currentQuestion];
+
+        questionElement.innerHTML = current.question;
+        questionImage.src = "question_img.jpg";
+
+        if (current.secondImg) {
+          secondImgElement.src = current.secondImg;
+          secondImgElement.style.display = 'block';
+        } else {
+          secondImgElement.style.display = 'none';
+        }
+
+        // Create row1 inputs
+        if (current.row1) {
+          current.row1.forEach((value, index) => {
+            const editable = value === ''; // If value is empty, make it editable
+            const inputField = createInputField(`row1-input-${index}`, colorClasses[index % colorClasses.length], value, editable);
+            row1Container.appendChild(inputField);
+          });
+        }
+        
+        // Create row2 inputs
+        if (current.row2) {
+      // Calculate the indices for the last two elements
+      const totalInputs = current.row2.length;
+      const secondLastIndex = totalInputs - 2;
+      const lastIndex = totalInputs - 1;
+      
+      // Add all inputs except the last two
+      for (let index = 0; index < secondLastIndex; index++) {
+        const value = current.row2[index];
+        const editable = value === ''; // If value is empty, make it editable
+        const inputField = createInputField(`row2-input-${index}`, colorClasses[(index + 3) % colorClasses.length], value, editable);
+        row2Container.appendChild(inputField);
+      }
+      
+      // Add the combined input for the last two elements
+      if (totalInputs >= 2) {
+        const secondLastValue = current.row2[secondLastIndex];
+        const lastValue = current.row2[lastIndex];
+        const secondLastEditable = secondLastValue === '';
+        const lastEditable = lastValue === '';
+        
+        const combinedField = createCombinedInputFields(
+          `row2-input-${secondLastIndex}`,
+          `row2-input-${lastIndex}`,
+          secondLastValue,
+          lastValue,
+          secondLastEditable,
+          lastEditable
+        );
+        
+        row2Container.appendChild(combinedField);
+      }
+    }
+
+
+    if (current.row3) {
+          current.row3.forEach((value, index) => {
+            const editable = value === ''; // If value is empty, make it editable
+            const inputField = createInputField(`row3-input-${index}`, colorClasses[index % colorClasses.length], value, editable);
+            row3Container.appendChild(inputField);
+          });
+        }
+        document.getElementById('message').innerHTML = '';
+        document.getElementById('nextbtn').style.display = 'none';
+        document.getElementById('submitbtn').style.display = 'inline-block';
+      }
+
+      function checkAnswers() {
+        const current = questions[currentQuestion];
+        let allCorrect = true;
+        
+        // Check row1 answers
+        if (current.row1_ans) {
+          current.row1_ans.forEach((answer, index) => {
+            const input = document.getElementById(`row1-input-${index}`);
+            if (input && input.value.trim() !== answer) {
+              input.classList.add('invalid');
+              allCorrect = false;
+            } else if (input) {
+              input.classList.remove('invalid');
+            }
+          });
+        }
+        
+        // Check row2 answers
+        if (current.row2_ans) {
+          current.row2_ans.forEach((answer, index) => {
+            const input = document.getElementById(`row2-input-${index}`);
+            if (input && input.value.trim() !== answer) {
+              input.classList.add('invalid');
+              allCorrect = false;
+            } else if (input) {
+              input.classList.remove('invalid');
+            }
+          });
+        }
+
+        if (current.row3_ans) {
+          current.row3_ans.forEach((answer, index) => {
+            const input = document.getElementById(`row3-input-${index}`);
+            if (input && input.value.trim() !== answer) {
+              input.classList.add('invalid');
+              allCorrect = false;
+            } else if (input) {
+              input.classList.remove('invalid');
+            }
+          });
+        }
+
+        if (allCorrect) {
+          document.getElementById('message').innerHTML = "Good Job! <div class='flip'>&#128512</div>";
+          document.getElementById('nextbtn').style.display = 'inline-block';
+          document.getElementById('submitbtn').style.display = 'none';
+          document.getElementById('sound').play();
+        } else {
+          document.getElementById('message').innerHTML = 'Try Again! <div class="flip">😎</div>';
+          document.getElementById('fail').play();
+        }
+      }
+
+      function newques() {
+        if (currentQuestion === questions.length - 1) {
+          window.location.href='question1.html';
+        } else {
+          currentQuestion++;
+          loadQuestion();
+          const buttons = document.querySelectorAll('.smallbtn');
+          buttons.forEach((button, index) => {
+            if (index === currentQuestion) {
+              button.classList.add('active');
+            } else {
+              button.classList.remove('active');
+            }
+          });
+        }
+      }
+
+      function abc(x) {
+        document.getElementById('heading').innerHTML = 'Area Modal';
+        document.getElementById('math_ques').src = 'question_img.jpg';
+        currentQuestion = x - 1;
+        loadQuestion();
+        const buttons = document.querySelectorAll('.smallbtn');
+        buttons.forEach(button => button.classList.remove('active'));
+        buttons[x - 1].classList.add('active');
+      }
+
+      window.onload = async function () {
+        await fetchQuestions();
+        loadQuestion();
+
+        const questionButtonsContainer = document.getElementById('questionButtons');
+        questions.forEach((_, index) => {
+          const button = document.createElement('button');
+          button.textContent = `Q${index + 1}`;
+          button.classList.add('smallbtn');
+          button.onclick = () => abc(index + 1);
+
+          if (index === 0) {
+            button.classList.add('active');
+          }
+
+          questionButtonsContainer.appendChild(button);
+        });
+
+        document.getElementById('submitbtn').onclick = () => {
+          checkAnswers();
+        };
+      };
+    </script>
+  </center>
+</body>
+</html>
